@@ -255,6 +255,8 @@ class EmulatorJS {
         this.videoRotationChanged = false;
         this.capture = this.capture || {};
         this.capture.photo = this.capture.photo || {};
+        // 截图源保持默认 canvas：黑屏已由 play.js 的 getContext 补丁（preserveDrawingBuffer:true）治本，
+        // 不用 retroarch 源（部分核心 cmd_take_screenshot 不支持时会挂起无响应）。
         this.capture.photo.source = ["canvas", "retroarch"].includes(this.capture.photo.source) ? this.capture.photo.source : "canvas";
         this.capture.photo.format = (typeof this.capture.photo.format === "string") ? this.capture.photo.format : "png";
         this.capture.photo.upscale = (typeof this.capture.photo.upscale === "number") ? this.capture.photo.upscale : 1;

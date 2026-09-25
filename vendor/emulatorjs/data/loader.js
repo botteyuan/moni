@@ -23,7 +23,8 @@
                 } else if (file.endsWith("emulator.min.js")) {
                     return scriptPath + file;
                 } else {
-                    return scriptPath + "src/" + file;
+                    // 缓存防呆：src 脚本带版本号，vendor 文件更新后浏览器能立即拉到新版
+                    return scriptPath + "src/" + file + "?v=20260925h";
                 }
             }();
             script.onload = resolve;

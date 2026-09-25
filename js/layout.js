@@ -83,4 +83,71 @@
       `</div></a>`
     );
   };
+
+  // ---- 个人专属推荐 ----
+  // 浏览器无法读取真实 MAC，故用「每设备持久化的 UUID + 浏览器指纹」作为个性化属性，
+  // 以该属性为种子确定性地洗牌游戏列表，保证：每人（每设备）看到的一组不同、且刷新后稳定。
+  (function () {
+    function getDeviceId() {
+      let id = localStorage.getItem('monigames_device_id');
+      if (!id) {
+        try {
+          id = 'D' + (crypto.randomUUID ? crypto.randomUUID() : (Date.now().toString(36) + Math.random().toString(36).slice(2)));
+        } catch (e) {
+          id = 'D' + Date.now().toString(36) + Math.random().toString(36).slice(2);
+        }
+        localStorage.setItem('monigames_device_id', id);
+      }
+      return id;
+    }
+    function fingerprint() {
+      const n = navigator, s = screen;
+      return [
+        n.userAgent, n.language, (n.languages || []).join(','),
+        s.width + 'x' + s.height, s.colorDepth,
+        new Date().getTimezoneOffset(), n.hardwareConcurrency, n.platform,
+      ].join('|');
+    }
+    // 字符串 → 32 位种子
+    function xmur3(str) {
+      let h = 1779033703 ^ str.length;
+      for (let i = 0; i < str.length; i++) {
+        h = Math.imul(h ^ str.charCodeAt(i), 3432918353);
+        h = (h << 13) | (h >>> 19);
+      }
+      return function () {
+        h = Math.imul(h ^ (h >>> 16), 2246822507);
+        h = Math.imul(h ^ (h >>> 13), 3266489909);
+        return (h ^= h >>> 16) >>> 0;
+      };
+    }
+    // 确定性伪随机
+    function mulberry32(a) {
+      return function () {
+        a |= 0; a = (a + 0x6D2B79F5) | 0;
+        let t = Math.imul(a ^ (a >>> 15), 1 | a);
+        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+      };
+    }
+    window.Personal = {
+      deviceId: getDeviceId,
+      // 返回最多 count 个互不相同、按设备确定性排序的游戏
+      picks(games, count) {
+        const seed = xmur3(getDeviceId() + '||' + fingerprint())();
+        const rnd = mulberry32(seed);
+        const arr = games.slice();
+        for (let i = arr.length - 1; i > 0; i--) {
+          const j = Math.floor(rnd() * (i + 1));
+          const tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+        }
+        return arr.slice(0, Math.min(count, arr.length));
+      },
+      // 专属短编号（展示用），让人一眼看出「这是为我定制的」
+      badge() {
+        const h = xmur3(getDeviceId())();
+        return ('0000' + h.toString(16).toUpperCase()).slice(-4);
+      },
+    };
+  })();
 })();

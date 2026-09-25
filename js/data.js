@@ -3,9 +3,6 @@
   const CATEGORIES = [
     { id: 'fc', icon: '🕹️', color: '#ff2e88' },
     { id: 'md', icon: '🟦', color: '#1f6feb' },
-    { id: 'sfc', icon: '🟥', color: '#e8453c' },
-    { id: 'arcade', icon: '🎰', color: '#7c5cff' },
-    { id: 'gba', icon: '🎮', color: '#2ee6a6' },
   ];
 
   const GAMES = [
@@ -17,67 +14,53 @@
     { id: 7005, cat: 'fc', title: { cn: '空中魂斗罗美版', en: 'S.C.A.T. (US)' }, rom: 'roms/fc/空中魂斗罗美版.nes', cover: 'assets/covers/scat.png', tags: { cn: '射击', en: 'Shooter' }, plays: 460000 },
     { id: 7006, cat: 'fc', title: { cn: '1942', en: '1942 (JP/US)' }, rom: 'roms/fc/1942.nes', cover: 'assets/covers/1942.png', tags: { cn: '射击', en: 'Shooter' }, plays: 980000 },
     { id: 7007, cat: 'fc', title: { cn: '1943 中途岛海战', en: '1943: The Battle of Midway' }, rom: 'roms/fc/1943.nes', cover: 'assets/covers/1943.png', tags: { cn: '射击', en: 'Shooter' }, plays: 920000 },
-    { id: 7008, cat: 'fc', title: { cn: '89电脑九星占卜', en: "'89 Dennou Kyuusei Uranai" }, rom: 'roms/fc/89dennoukyuuseiuranaijapan.nes', cover: 'assets/covers/89dennou.png', tags: { cn: '益智', en: 'Puzzle' }, plays: 150000 },
-    { id: 7009, cat: 'fc', title: { cn: '十码大战', en: '10-Yard Fight' }, rom: 'roms/fc/10yardfightusaeurope.nes', cover: 'assets/covers/10yard.png', tags: { cn: '体育', en: 'Sports' }, plays: 320000 },
     { id: 7010, cat: 'fc', title: { cn: '2010 街头霸王', en: '2010 Street Fighter (J)' }, rom: 'roms/fc/2010streetfighterjapan.nes', cover: 'assets/covers/sf2010.png', tags: { cn: '格斗', en: 'Fighting' }, plays: 540000 },
-    { id: 7011, cat: 'fc', title: { cn: '3D 世界冒险', en: '3-D WorldRunner' }, rom: 'roms/fc/3dworldrunnerusa.nes', cover: 'assets/covers/worldrunner.png', tags: { cn: '竞速', en: 'Racing' }, plays: 410000 },
-    { id: 7012, cat: 'fc', title: { cn: '八眼', en: '8 Eyes' }, rom: 'roms/fc/8eyesusa.nes', cover: 'assets/covers/8eyes.png', tags: { cn: '动作', en: 'Action' }, plays: 230000 },
     { id: 7013, cat: 'fc', title: { cn: '烟山坦克', en: '90 Tank (Battle City)' }, rom: 'roms/fc/90tank.nes', cover: 'assets/covers/90tank.png', tags: { cn: '射击', en: 'Shooter' }, plays: 860000 },
-    { id: 7014, cat: 'fc', title: { cn: 'A列车', en: 'A Ressha de Ikou (J)' }, rom: 'roms/fc/aresshadeikoujapan.nes', cover: 'assets/covers/aressha.png', tags: { cn: '模拟', en: 'Sim' }, plays: 180000 },
-    { id: 7015, cat: 'fc', title: { cn: '野球人生一直线', en: 'Yakyuu Jinsei Icchokusen (J)' }, rom: 'roms/fc/aayakyuujinseiicchokusenjapan.nes', cover: 'assets/covers/yakyuu.png', tags: { cn: '体育', en: 'Sports' }, plays: 260000 },
     { id: 7016, cat: 'fc', title: { cn: 'Abadox 致命内战', en: 'Abadox' }, rom: 'roms/fc/abadoxthedeadlyinnerwarusa.nes', cover: 'assets/covers/abadox.png', tags: { cn: '射击', en: 'Shooter' }, plays: 370000 },
-    { id: 7017, cat: 'fc', title: { cn: '暴坊天狗', en: 'Abarenbou Tengu (J)' }, rom: 'roms/fc/abarenboutengujapan.nes', cover: 'assets/covers/tengu.png', tags: { cn: '动作', en: 'Action' }, plays: 210000 },
-    { id: 7018, cat: 'fc', title: { cn: 'Abadox（日版）', en: 'Abadox (J)' }, rom: 'roms/fc/abberoadx.nes', cover: 'assets/covers/abadoxj.png', tags: { cn: '射击', en: 'Shooter' }, plays: 190000 },
-    { id: 7019, cat: 'fc', title: { cn: '王牌：铁鹰3', en: 'ACES: Iron Eagle III (J)' }, rom: 'roms/fc/acesironeagle3japan.nes', cover: 'assets/covers/aces.png', tags: { cn: '射击', en: 'Shooter' }, plays: 290000 },
-    // ---- FC / NES ----
-    { id: 4137, cat: 'fc', title: { cn: '魂斗罗(美版)', en: 'Contra (US)' }, cover: 'https://img.1990i.com/fcpic/sj/436a.png', tags: { cn: '射击', en: 'Shooter' }, plays: 1280000 },
-    { id: 3501, cat: 'fc', title: { cn: '超级马里奥', en: 'Super Mario' }, cover: 'https://img.1990i.com/fcpic/2146a.png', tags: { cn: '平台', en: 'Platformer' }, plays: 2110000 },
-    { id: 3882, cat: 'fc', title: { cn: '激龟快打', en: 'Teenage Mutant Ninja Turtles' }, cover: 'https://img.1990i.com/fcpic/gd/2254a.png', tags: { cn: '格斗', en: 'Fighting' }, plays: 980000 },
-    { id: 4511, cat: 'fc', title: { cn: '雪人兄弟', en: 'Snow Bros' }, cover: 'https://img.1990i.com/fcpic/xyx/2023a.png', tags: { cn: '动作', en: 'Action' }, plays: 760000 },
-    { id: 4141, cat: 'fc', title: { cn: '魂斗罗力量', en: 'Contra Force' }, cover: 'https://img.1990i.com/fcpic/sj/437a.png', tags: { cn: '射击', en: 'Shooter' }, plays: 654000 },
-    { id: 4275, cat: 'fc', title: { cn: '坦克大战', en: 'Battle City' }, cover: 'https://img.1990i.com/fcpic/xyx/timg.png', tags: { cn: '策略', en: 'Strategy' }, plays: 1430000 },
-    { id: 3175, cat: 'fc', title: { cn: '冒险岛', en: 'Adventure Island' }, cover: 'https://img.1990i.com/fcpic/1001a.png', tags: { cn: '平台', en: 'Platformer' }, plays: 890000 },
-    { id: 4174, cat: 'fc', title: { cn: '热血格斗', en: 'Nekketsu Fighting' }, cover: 'https://img.1990i.com/fcpic/ydbs/1544a.png', tags: { cn: '格斗', en: 'Fighting' }, plays: 720000 },
+    { id: 7017, cat: 'fc', title: { cn: '龙战士', en: 'Dragon Fighter' }, rom: 'roms/fc/Dragon Fighter (J).nes', cover: 'assets/covers/dragonfighter.png', tags: { cn: '动作', en: 'Action' }, plays: 300000 },
+    { id: 7018, cat: 'fc', title: { cn: '七宝奇谋', en: 'The Goonies' }, rom: 'roms/fc/七宝奇谋—汉化版.nes', cover: 'assets/covers/goonies.png', tags: { cn: '动作', en: 'Action' }, plays: 337000 },
+    { id: 7019, cat: 'fc', title: { cn: '兵锋2', en: 'Bing Feng 2' }, rom: 'roms/fc/兵锋2.nes', cover: 'assets/covers/bingfeng2.png', tags: { cn: '射击', en: 'Shooter' }, plays: 374000 },
+    { id: 7020, cat: 'fc', title: { cn: '兵锋3', en: 'Bing Feng 3' }, rom: 'roms/fc/兵锋3.nes', cover: 'assets/covers/bingfeng3.png', tags: { cn: '射击', en: 'Shooter' }, plays: 411000 },
+    { id: 7021, cat: 'fc', title: { cn: '冒险岛', en: 'Adventure Island' }, rom: 'roms/fc/冒险岛1代.nes', cover: 'assets/covers/adventureisland1.png', tags: { cn: '平台', en: 'Platformer' }, plays: 448000 },
+    { id: 7022, cat: 'fc', title: { cn: '冒险岛2', en: 'Adventure Island 2' }, rom: 'roms/fc/冒险岛2.nes', cover: 'assets/covers/adventureisland2.png', tags: { cn: '平台', en: 'Platformer' }, plays: 485000 },
+    { id: 7023, cat: 'fc', title: { cn: '冒险岛3', en: 'Adventure Island 3' }, rom: 'roms/fc/冒险岛3.nes', cover: 'assets/covers/adventureisland3.png', tags: { cn: '平台', en: 'Platformer' }, plays: 522000 },
+    { id: 7024, cat: 'fc', title: { cn: '冒险岛3（汉化）', en: 'Adventure Island 3 (CH)' }, rom: 'roms/fc/冒险岛3—汉化版.nes', cover: 'assets/covers/adventureisland3ch.png', tags: { cn: '平台', en: 'Platformer' }, plays: 559000 },
+    { id: 7025, cat: 'fc', title: { cn: '冒险岛4', en: 'Adventure Island 4' }, rom: 'roms/fc/冒险岛4.nes', cover: 'assets/covers/adventureisland4.png', tags: { cn: '平台', en: 'Platformer' }, plays: 596000 },
+    { id: 7026, cat: 'fc', title: { cn: '少年街霸2', en: 'Street Fighter II' }, rom: 'roms/fc/少年街霸2.nes', cover: 'assets/covers/sfight2.png', tags: { cn: '格斗', en: 'Fighting' }, plays: 633000 },
+    { id: 7028, cat: 'fc', title: { cn: '影子传说', en: 'Kage' }, rom: 'roms/fc/影子传说无敌版.nes', cover: 'assets/covers/kage.png', tags: { cn: '动作', en: 'Action' }, plays: 707000 },
+    { id: 7029, cat: 'fc', title: { cn: '恶魔城', en: 'Castlevania' }, rom: 'roms/fc/恶魔城.nes', cover: 'assets/covers/castlevania.png', tags: { cn: '动作', en: 'Action' }, plays: 744000 },
+    { id: 7031, cat: 'fc', title: { cn: '松鼠大战', en: "Chip 'n Dale" }, rom: 'roms/fc/松鼠大战1.nes', cover: 'assets/covers/chipndale1.png', tags: { cn: '平台', en: 'Platformer' }, plays: 818000 },
+    { id: 7032, cat: 'fc', title: { cn: '松鼠大战2', en: "Chip 'n Dale 2" }, rom: 'roms/fc/松鼠大战2.nes', cover: 'assets/covers/chipndale2.png', tags: { cn: '平台', en: 'Platformer' }, plays: 855000 },
+    { id: 7033, cat: 'fc', title: { cn: '水上魂斗罗', en: 'S.C.A.T. (US)' }, rom: 'roms/fc/水上魂斗罗美版.nes', cover: 'assets/covers/watercontra.png', tags: { cn: '射击', en: 'Shooter' }, plays: 892000 },
+    { id: 7034, cat: 'fc', title: { cn: '洛克人X', en: 'Mega Man X' }, rom: 'roms/fc/洛克人X.nes', cover: 'assets/covers/megamanx.png', tags: { cn: '动作', en: 'Action' }, plays: 929000 },
+    { id: 7035, cat: 'fc', title: { cn: '脱狱', en: 'Bad Dudes' }, rom: 'roms/fc/脱狱.nes', cover: 'assets/covers/tuoyu.png', tags: { cn: '动作', en: 'Action' }, plays: 966000 },
+    { id: 7036, cat: 'fc', title: { cn: '脱狱2', en: 'Bad Dudes 2' }, rom: 'roms/fc/脱狱2.nes', cover: 'assets/covers/tuoyu2.png', tags: { cn: '动作', en: 'Action' }, plays: 1003000 },
+    { id: 7037, cat: 'fc', title: { cn: '赤影战士', en: 'Shadow of the Ninja' }, rom: 'roms/fc/赤影战士—汉化版.nes', cover: 'assets/covers/chiying.png', tags: { cn: '动作', en: 'Action' }, plays: 1040000 },
+    { id: 7038, cat: 'fc', title: { cn: '魂斗罗2（美版）', en: 'Super C' }, rom: 'roms/fc/魂斗罗2代美版.nes', cover: 'assets/covers/contra2.png', tags: { cn: '射击', en: 'Shooter' }, plays: 1077000 },
+    { id: 7039, cat: 'fc', title: { cn: '龙魂', en: 'Dragon Spirit' }, rom: 'roms/fc/龙魂.nes', cover: 'assets/covers/longhun.png', tags: { cn: '射击', en: 'Shooter' }, plays: 1114000 },
+    { id: 7040, cat: 'fc', title: { cn: '危机部队', en: 'Crisis Force (J)' }, rom: 'roms/fc/Crisis Force (J).nes', cover: 'assets/covers/fc_crisisforce.png', tags: { cn: '射击', en: 'Shooter' }, plays: 390000 },
+    { id: 7041, cat: 'fc', title: { cn: '烈夏·Recca', en: "Summer Carnival '92 - Recca" }, rom: "roms/fc/Summer Carnival '92 - Recca (J).nes", cover: 'assets/covers/fc_recca.png', tags: { cn: '射击', en: 'Shooter' }, plays: 405000 },
+    { id: 7042, cat: 'fc', title: { cn: '空中鲨鱼', en: 'Sky Shark' }, rom: 'roms/fc/7af316a3.nes', cover: 'assets/covers/fc_skyshark.png', tags: { cn: '射击', en: 'Shooter' }, plays: 415000 },
 
     // ---- MD / 世嘉 ----
-    { id: 8101, cat: 'md', title: { cn: '索尼克', en: 'Sonic the Hedgehog' }, cover: '', tags: { cn: '平台', en: 'Platformer' }, plays: 1980000 },
-    { id: 8102, cat: 'md', title: { cn: '怒之铁拳2', en: 'Streets of Rage 2' }, cover: '', tags: { cn: '清版', en: 'Beat-em-up' }, plays: 1320000 },
-    { id: 8103, cat: 'md', title: { cn: '战斧', en: 'Golden Axe' }, cover: '', tags: { cn: '清版', en: 'Beat-em-up' }, plays: 1150000 },
-    { id: 8104, cat: 'md', title: { cn: '超级忍', en: 'The Super Shinobi' }, cover: '', tags: { cn: '动作', en: 'Action' }, plays: 940000 },
-    { id: 8105, cat: 'md', title: { cn: '火枪英雄', en: 'Gunstar Heroes' }, cover: '', tags: { cn: '射击', en: 'Shooter' }, plays: 880000 },
-    { id: 8106, cat: 'md', title: { cn: '幽游白书-魔强统一战', en: 'Yu Yu Hakusho' }, cover: '', tags: { cn: '格斗', en: 'Fighting' }, plays: 1670000 },
-    { id: 8107, cat: 'md', title: { cn: '光明力量', en: 'Shining Force' }, cover: '', tags: { cn: '策略', en: 'SRPG' }, plays: 760000 },
-    { id: 8108, cat: 'md', title: { cn: '蚯蚓战士', en: 'Earthworm Jim' }, cover: '', tags: { cn: '平台', en: 'Platformer' }, plays: 690000 },
+    { id: 8109, cat: 'md', title: { cn: '爱登斯家族', en: 'The Addams Family' }, rom: 'roms/md/adamsfamily.bin', cover: 'assets/covers/md_adamsfamily.png', tags: { cn: '平台', en: 'Platformer' }, plays: 420000 },
+    { id: 8110, cat: 'md', title: { cn: '怪物世界4', en: 'Monster World IV' }, rom: 'roms/md/adventureworld4.bin', cover: 'assets/covers/md_monsterworld4.png', tags: { cn: '平台', en: 'Platformer' }, plays: 510000 },
+    { id: 8111, cat: 'md', title: { cn: '魂斗罗·铁血兵团', en: 'Contra: Hard Corps' }, rom: 'roms/md/contraironcorps.smd', cover: 'assets/covers/md_contra.svg', tags: { cn: '射击', en: 'Shooter' }, plays: 760000 },
+    { id: 8112, cat: 'md', title: { cn: '蜡笔小新', en: 'Crayon Shin-chan' }, rom: 'roms/md/crayonshinchan.bin', cover: 'assets/covers/md_shinchan.png', tags: { cn: '动作', en: 'Action' }, plays: 380000 },
+    { id: 8113, cat: 'md', title: { cn: '米奇狂热', en: 'Mickey Mania' }, rom: 'roms/md/crazymickey.bin', cover: 'assets/covers/md_mickey.png', tags: { cn: '平台', en: 'Platformer' }, plays: 470000 },
 
-    // ---- SFC / 超任 ----
-    { id: 8201, cat: 'sfc', title: { cn: '超级马里奥世界', en: 'Super Mario World' }, cover: '', tags: { cn: '平台', en: 'Platformer' }, plays: 2310000 },
-    { id: 8202, cat: 'sfc', title: { cn: '塞尔达传说-众神的三角力量', en: 'Zelda: A Link to the Past' }, cover: '', tags: { cn: '冒险', en: 'Adventure' }, plays: 1890000 },
-    { id: 8203, cat: 'sfc', title: { cn: '最终幻想6', en: 'Final Fantasy VI' }, cover: '', tags: { cn: 'RPG', en: 'RPG' }, plays: 1540000 },
-    { id: 8204, cat: 'sfc', title: { cn: '超级银河战士', en: 'Super Metroid' }, cover: '', tags: { cn: '探索', en: 'Metroidvania' }, plays: 1410000 },
-    { id: 8205, cat: 'sfc', title: { cn: '超级街头霸王2', en: 'Super Street Fighter II' }, cover: '', tags: { cn: '格斗', en: 'Fighting' }, plays: 1760000 },
-    { id: 8206, cat: 'sfc', title: { cn: '火焰纹章-纹章之谜', en: 'Fire Emblem: Mystery' }, cover: '', tags: { cn: '策略', en: 'SRPG' }, plays: 980000 },
-    { id: 8207, cat: 'sfc', title: { cn: '星之卡比-超明星', en: 'Kirby Super Star' }, cover: '', tags: { cn: '动作', en: 'Action' }, plays: 1120000 },
-    { id: 8208, cat: 'sfc', title: { cn: '牧场物语', en: 'Harvest Moon' }, cover: '', tags: { cn: '模拟', en: 'Sim' }, plays: 870000 },
+    { id: 8114, cat: 'md', title: { cn: '双截龙', en: 'Double Dragon' }, rom: 'roms/md/双截龙.bin', cover: 'assets/covers/md_double_dragon.png', tags: { cn: '格斗', en: 'Brawler' }, plays: 640000 },  // 占位封面，待截图替换
+    { id: 8115, cat: 'md', title: { cn: '双截龙2', en: 'Double Dragon II' }, rom: 'roms/md/双截龙2.bin', cover: 'assets/covers/md_double_dragon2.png', tags: { cn: '格斗', en: 'Brawler' }, plays: 610000 },  // 占位封面，待截图替换
+    { id: 8116, cat: 'md', title: { cn: '双截龙5·失落之影', en: 'Double Dragon V: The Shadow Falls' }, rom: 'roms/md/双截龙5-失落之影.bin', cover: 'assets/covers/md_double_dragon5.png', tags: { cn: '格斗', en: 'Brawler' }, plays: 430000 },  // 占位封面，待截图替换
+    { id: 8117, cat: 'md', title: { cn: '坦克大战', en: 'Battle Tank' }, rom: 'roms/md/坦克大战.bin', cover: 'assets/covers/md_battle_tank.png', tags: { cn: '射击', en: 'Shooter' }, plays: 320000 },  // 占位封面，待截图替换
+    { id: 8118, cat: 'md', title: { cn: '天使之翼', en: 'Tecmo Cup Football Game' }, rom: 'roms/md/天使之翼.bin', cover: 'assets/covers/md_tianshi_zhiyi.png', tags: { cn: '体育', en: 'Sports' }, plays: 350000 },  // 占位封面，待截图替换
+    { id: 8119, cat: 'md', title: { cn: '幽游白书·魔强统一战', en: 'Yu Yu Hakusho: Makyō Tōitsusen' }, rom: 'roms/md/幽游白书-魔强统一战.bin', cover: 'assets/covers/md_yuyu_makyu.png', tags: { cn: '格斗', en: 'Fighting' }, plays: 880000 },  // 占位封面，待截图替换
+    { id: 8120, cat: 'md', title: { cn: '幽游白书外传', en: 'Yu Yu Hakusho Gaiden' }, rom: 'roms/md/幽游白书外传.bin', cover: 'assets/covers/md_yuyu_gaiden.png', tags: { cn: '动作', en: 'Action' }, plays: 460000 },  // 占位封面，待截图替换
+    { id: 8121, cat: 'md', title: { cn: '忍者神龟', en: 'TMNT: The Hyperstone Heist' }, rom: 'roms/md/忍者神龟.bin', cover: 'assets/covers/md_tmnt.png', tags: { cn: '动作', en: 'Action' }, plays: 700000 },  // 占位封面，待截图替换
+    { id: 8122, cat: 'md', title: { cn: '怒之铁拳3', en: 'Streets of Rage 3' }, rom: 'roms/md/怒之铁拳3.bin', cover: 'assets/covers/md_streets_of_rage3.png', tags: { cn: '格斗', en: 'Brawler' }, plays: 950000 },  // 占位封面，待截图替换
 
-    // ---- Arcade / 街机 ----
-    { id: 5341, cat: 'arcade', title: { cn: '三国志', en: 'Warriors of Fate' }, cover: 'https://img.1990i.com/arcadepic/wof.png', tags: { cn: '清版', en: 'Beat-em-up' }, plays: 980000 },
-    { id: 5333, cat: 'arcade', title: { cn: '名将', en: 'Captain Commando' }, cover: 'https://img.1990i.com/arcadepic/captcommu.png', tags: { cn: '清版', en: 'Beat-em-up' }, plays: 760000 },
-    { id: 5334, cat: 'arcade', title: { cn: '恐龙快打', en: 'Cadillacs and Dinosaurs' }, cover: 'https://img.1990i.com/arcadepic/dino.png', tags: { cn: '清版', en: 'Beat-em-up' }, plays: 1240000 },
-    { id: 5719, cat: 'arcade', title: { cn: '西游释厄传', en: 'Oriental Legend' }, cover: 'https://img.1990i.com/arcadepic/orlegend.png', tags: { cn: '清版', en: 'Beat-em-up' }, plays: 680000 },
-    { id: 5337, cat: 'arcade', title: { cn: '街头霸王', en: 'Street Fighter II' }, cover: 'https://img.1990i.com/arcadepic/sf2hfj.png', tags: { cn: '格斗', en: 'Fighting' }, plays: 1670000 },
-    { id: 5301, cat: 'arcade', title: { cn: '三国战纪', en: 'Knights of Valour' }, cover: 'https://img.1990i.com/arcadepic/kovsh103.png', tags: { cn: '清版', en: 'Beat-em-up' }, plays: 1120000 },
-    { id: 5302, cat: 'arcade', title: { cn: '合金弹头', en: 'Metal Slug' }, cover: 'https://img.1990i.com/arcadepic/Mslug1.png', tags: { cn: '射击', en: 'Shooter' }, plays: 1530000 },
-    { id: 5303, cat: 'arcade', title: { cn: '拳皇', en: 'The King of Fighters' }, cover: 'https://img.1990i.com/arcadepic/kof97.png', tags: { cn: '格斗', en: 'Fighting' }, plays: 1890000 },
 
-    // ---- GBA ----
-    { id: 6101, cat: 'gba', title: { cn: '口袋妖怪', en: 'Pokemon' }, cover: 'https://img.1990i.com/gbapic/kdyg.png', tags: { cn: '收集', en: 'RPG' }, plays: 1740000 },
-    { id: 6102, cat: 'gba', title: { cn: '恶魔城', en: 'Castlevania' }, cover: 'https://img.1990i.com/gbapic/emc.jpg', tags: { cn: '动作', en: 'Action' }, plays: 690000 },
-    { id: 6103, cat: 'gba', title: { cn: '牧场物语', en: 'Harvest Moon' }, cover: 'https://img.1990i.com/gbapic/mcwy.jpg', tags: { cn: '模拟', en: 'Sim' }, plays: 540000 },
-    { id: 6104, cat: 'gba', title: { cn: '召唤之夜-铸剑物语', en: 'Summon Night' }, cover: 'https://img.1990i.com/gbapic/zhzy.jpg', tags: { cn: 'RPG', en: 'RPG' }, plays: 470000 },
-    { id: 6105, cat: 'gba', title: { cn: '塞尔达传说-缩小帽', en: 'Zelda: Minish Cap' }, cover: 'https://img.1990i.com/gbapic/serdcc.jpg', tags: { cn: '冒险', en: 'Adventure' }, plays: 1120000 },
-    { id: 6106, cat: 'gba', title: { cn: '火焰纹章', en: 'Fire Emblem' }, cover: 'https://img.1990i.com/gbapic/hywz.jpg', tags: { cn: '策略', en: 'SRPG' }, plays: 830000 },
-    { id: 6107, cat: 'gba', title: { cn: '超级马里奥', en: 'Super Mario Advance' }, cover: 'https://img.1990i.com/gbapic/cjmla.jpg', tags: { cn: '平台', en: 'Platformer' }, plays: 1310000 },
-    { id: 6108, cat: 'gba', title: { cn: '超级机器人大战', en: 'Super Robot Wars' }, cover: 'https://img.1990i.com/gbapic/cjjqrdz.jpg', tags: { cn: '策略', en: 'SRPG' }, plays: 720000 },
+
   ];
 
   window.SITE = {

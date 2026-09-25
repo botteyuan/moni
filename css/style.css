@@ -108,6 +108,21 @@ a { color: inherit; text-decoration: none; }
 
 .game-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; }
 
+/* 首页各模拟器分类：每行 6 个，显示 2 行（共 12 款） */
+.game-section:not(.personal-section) .game-grid {
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+@media (max-width: 860px) {
+  .game-section:not(.personal-section) .game-grid { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 560px) {
+  .game-section:not(.personal-section) .game-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 400px) {
+  .game-section:not(.personal-section) .game-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
 .game-card {
   background: var(--panel);
   border: 1px solid rgba(255,255,255,.06);
@@ -176,4 +191,27 @@ a { color: inherit; text-decoration: none; }
   .side-block { position: static; }
   .nav { display: none; }
   .search input { width: 130px; }
+}
+
+/* 个人专属推荐区块 */
+.personal-section { 
+  position: relative;
+  padding: 20px;
+  border: 1px solid rgba(255, 210, 63, 0.25);
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(255, 210, 63, 0.08), rgba(124, 92, 255, 0.06));
+}
+.personal-badge {
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a1320;
+  background: var(--yellow);
+  padding: 2px 8px;
+  border-radius: 999px;
+  letter-spacing: 0.5px;
+}
+.personal-sub {
+  font-size: 13px;
+  color: var(--muted);
 }

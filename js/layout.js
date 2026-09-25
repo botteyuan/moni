@@ -30,7 +30,7 @@
     return `
     <footer class="site-footer">
       <div class="container">
-        <p data-i18n="footer.text">本站为 yikm.net 的仿制演示，仅供学习交流。</p>
+        <p data-i18n="footer.text">本站为模拟器演示系统，仅供学习交流。</p>
       </div>
     </footer>`;
   }

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="play.title.suffix">在线玩</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main class="container">
+    <p style="margin:24px 0 0"><a href="index.html" data-i18n="back">返回首页</a> · <a href="list.html" data-i18n="nav.all">全部游戏</a></p>
+
+    <div class="play-wrap">
+      <div>
+        <h1 class="play-title" id="playTitle">—</h1>
+        <p class="play-sub" id="playSub"></p>
+
+        <div class="stage" id="stage">
+          <div id="game" class="emu-host"></div>
+          <div id="placeholder" class="emu-placeholder" style="display:none"></div>
+        </div>
+
+        <div class="controls" id="controls"></div>
+      </div>
+
+      <aside class="side-block">
+        <div class="related">
+          <h3 data-i18n="related">相关推荐</h3>
+          <div class="game-grid" id="relatedGrid" style="grid-template-columns:1fr 1fr;"></div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/i18n.js?v=20260922"></script>
+  <script src="js/data.js?v=20260922"></script>
+  <script src="js/layout.js?v=20260922"></script>
+  <script src="js/play.js?v=20260922"></script>
+</body>
+</html>

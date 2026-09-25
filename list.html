@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="list.title">游戏列表</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main class="container">
+    <div class="list-head">
+      <h1 class="list-title" id="listTitle" data-i18n="list.title">游戏列表</h1>
+    </div>
+
+    <div class="cat-tabs" id="catTabs"></div>
+
+    <p class="result-count" id="resultCount"></p>
+    <div class="game-grid" id="listGrid"></div>
+    <p class="empty" id="emptyState" style="display:none" data-i18n="list.empty">没有找到相关游戏，换个关键词试试。</p>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/i18n.js?v=20260922"></script>
+  <script src="js/data.js?v=20260922"></script>
+  <script src="js/layout.js?v=20260922"></script>
+  <script>
+    function getParams() {
+      const p = new URLSearchParams(location.search);
+      return { cat: p.get('cat') || '', q: p.get('q') || '' };
+    }
+
+    function renderTabs(activeCat) {
+      const tabs = document.getElementById('catTabs');
+      const all = `<a class="cat-tab ${!activeCat ? 'active' : ''}" href="list.html">${I18N.t('list.all')}</a>`;
+      const rest = SITE.CATEGORIES.map((c) =>
+        `<a class="cat-tab ${c.id === activeCat ? 'active' : ''}" href="list.html?cat=${c.id}">${SITE.catLabel(c.id)}</a>`
+      ).join('');
+      tabs.innerHTML = all + rest;
+    }
+
+    function renderList() {
+      const { cat, q } = getParams();
+      const titleEl = document.getElementById('listTitle');
+      const grid = document.getElementById('listGrid');
+      const empty = document.getElementById('emptyState');
+      const count = document.getElementById('resultCount');
+
+      renderTabs(cat);
+
+      let list;
+      if (q) {
+        list = SITE.search(q);
+        titleEl.textContent = '"' + q + '"';
+      } else if (cat) {
+        list = SITE.byCat(cat);
+        titleEl.textContent = SITE.catLabel(cat);
+      } else {
+        list = SITE.GAMES.slice();
+        titleEl.textContent = I18N.t('list.all');
+      }
+
+      if (list.length === 0) {
+        grid.innerHTML = '';
+        empty.style.display = 'block';
+        count.textContent = '';
+      } else {
+        empty.style.display = 'none';
+        grid.innerHTML = list.map(cardHTML).join('');
+        count.textContent = `${I18N.t('list.results')} ${list.length} ${I18N.t('list.games')}`;
+      }
+      I18N.apply();
+    }
+
+    renderChrome();
+    renderList();
+    window.__onLang = renderList;
+  </script>
+</body>
+</html>

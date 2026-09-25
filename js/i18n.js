@@ -50,7 +50,7 @@
       'play.btnZoom': '缩放画面',
       'related': '相关推荐',
       'back': '返回首页',
-      'footer.text': '本站为 yikm.net 的仿制演示，仅供学习交流，与原作者无关。',
+      'footer.text': '本站为模拟器演示，仅供学习参考',
       'lang.label': '语言',
     },
     en: {
@@ -102,7 +102,7 @@
       'play.btnZoom': 'Zoom',
       'related': 'You May Also Like',
       'back': 'Back to Home',
-      'footer.text': 'Fan-made replica of yikm.net for learning only. Not affiliated.',
+      'footer.text': 'Emulator demo for learning reference only.',
       'lang.label': 'Language',
     },
   };

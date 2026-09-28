@@ -45,7 +45,7 @@
     // ---- MD / 世嘉 ----
     { id: 8109, cat: 'md', title: { cn: '爱登斯家族', en: 'The Addams Family' }, rom: 'roms/md/adamsfamily.bin', cover: 'assets/covers/md_adamsfamily.png', tags: { cn: '平台', en: 'Platformer' }, plays: 420000 },
     { id: 8110, cat: 'md', title: { cn: '怪物世界4', en: 'Monster World IV' }, rom: 'roms/md/adventureworld4.bin', cover: 'assets/covers/md_monsterworld4.png', tags: { cn: '平台', en: 'Platformer' }, plays: 510000 },
-    { id: 8111, cat: 'md', title: { cn: '魂斗罗·铁血兵团（简体）', en: 'Contra: Hard Corps (SCN)' }, rom: 'roms/md/contra_hardcorps_scn.md', cover: 'assets/covers/md_contra.png', tags: { cn: '射击', en: 'Shooter' }, plays: 760000 },
+    { id: 8111, cat: 'md', title: { cn: '魂斗罗·铁血兵团（简体）', en: 'Contra: Hard Corps (SCN)' }, rom: 'roms/md/contra_hardcorps_scn.bin', cover: 'assets/covers/md_contra.png', tags: { cn: '射击', en: 'Shooter' }, plays: 760000 },
     { id: 8112, cat: 'md', title: { cn: '蜡笔小新', en: 'Crayon Shin-chan' }, rom: 'roms/md/crayonshinchan.bin', cover: 'assets/covers/md_shinchan.png', tags: { cn: '动作', en: 'Action' }, plays: 380000 },
     { id: 8113, cat: 'md', title: { cn: '米奇狂热', en: 'Mickey Mania' }, rom: 'roms/md/crazymickey.bin', cover: 'assets/covers/md_mickey.png', tags: { cn: '平台', en: 'Platformer' }, plays: 470000 },
 
@@ -59,7 +59,7 @@
     { id: 8121, cat: 'md', title: { cn: '忍者神龟', en: 'TMNT: The Hyperstone Heist' }, rom: 'roms/md/忍者神龟.bin', cover: 'assets/covers/md_tmnt.png', tags: { cn: '动作', en: 'Action' }, plays: 700000 },  // 占位封面，待截图替换
     { id: 8122, cat: 'md', title: { cn: '怒之铁拳3', en: 'Streets of Rage 3' }, rom: 'roms/md/怒之铁拳3.bin', cover: 'assets/covers/md_streets_of_rage3.png', tags: { cn: '格斗', en: 'Brawler' }, plays: 950000 },  // 占位封面，待截图替换
     { id: 8123, cat: 'md', title: { cn: '火枪英雄', en: 'Gunstar Heroes' }, rom: 'roms/md/gunstarheroes.bin', cover: 'assets/covers/md_gunstarheroes.png', tags: { cn: '射击', en: 'Shooter' }, plays: 1000000 },
-    { id: 8124, cat: 'md', title: { cn: '魂斗罗·铁血兵团（繁体）', en: 'Contra: Hard Corps (TCN)' }, rom: 'roms/md/contra_hardcorps_tcn.md', cover: 'assets/covers/md_contra_tcn.png', tags: { cn: '射击', en: 'Shooter' }, plays: 770000 },
+    { id: 8124, cat: 'md', title: { cn: '魂斗罗·铁血兵团（繁体）', en: 'Contra: Hard Corps (TCN)' }, rom: 'roms/md/contra_hardcorps_tcn.bin', cover: 'assets/covers/md_contra_tcn.png', tags: { cn: '射击', en: 'Shooter' }, plays: 770000 },
 
 
   ];

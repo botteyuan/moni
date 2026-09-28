@@ -37,6 +37,63 @@
     relatedEl.innerHTML = related.map(cardHTML).join('');
   }
 
+  // ---- SEO：按当前游戏更新标题/描述/OG/Twitter/canonical/hreflang + VideoGame 结构化数据 ----
+  function renderSEO() {
+    const g = game;
+    const DOMAIN = 'https://www.webplaygame.tech';
+    const base = DOMAIN + '/play.html?id=' + g.id;        // 规范地址（中文版）
+    const urlEn = base + '&lang=en';                       // 英文版地址
+    const isEn = I18N.lang === 'en';
+    const nameCn = g.title.cn, nameEn = g.title.en;
+    const catLabel = g.cat === 'fc' ? 'FC/红白机' : 'MD/世嘉';
+    const catLabelEn = g.cat === 'fc' ? 'NES/FC' : 'Sega MD';
+    const genre = g.tags ? (g.tags[I18N.lang] || g.tags.cn) : '';
+    const titleStr = isEn
+      ? `${nameEn} — Play Online | SUBOR Web Emulator`
+      : `${nameCn} 在线玩 | 小霸王网页模拟器`;
+    const desc = isEn
+      ? `Play ${nameEn} (${nameCn}) online — a classic ${catLabelEn} game. Instant browser play with keyboard support.`
+      : `在线玩《${nameCn}》(${nameEn}) — ${catLabel}经典游戏，网页模拟器即开即玩，支持键盘操作。`;
+    document.title = titleStr;
+
+    const upsertMeta = (attr, val, content) => {
+      let el = document.head.querySelector(`meta[${attr}="${val}"]`);
+      if (!el) { el = document.createElement('meta'); el.setAttribute(attr, val); document.head.appendChild(el); }
+      el.setAttribute('content', content);
+    };
+    upsertMeta('name', 'description', desc);
+    upsertMeta('property', 'og:url', base);
+    upsertMeta('property', 'og:title', titleStr);
+    upsertMeta('property', 'og:description', desc);
+    upsertMeta('property', 'og:image', DOMAIN + '/' + g.cover);
+    upsertMeta('property', 'og:locale', isEn ? 'en_US' : 'zh_CN');
+    upsertMeta('name', 'twitter:title', titleStr);
+    upsertMeta('name', 'twitter:description', desc);
+    upsertMeta('name', 'twitter:image', DOMAIN + '/' + g.cover);
+
+    // hreflang：让 Google 分别索引中/英两种语言版本
+    const upsertLink = (rel, hreflang, href) => {
+      const sel = `link[rel="${rel}"]` + (hreflang ? `[hreflang="${hreflang}"]` : '');
+      let el = document.head.querySelector(sel);
+      if (!el) { el = document.createElement('link'); el.rel = rel; if (hreflang) el.hreflang = hreflang; document.head.appendChild(el); }
+      el.href = href;
+    };
+    upsertLink('canonical', null, base);
+    upsertLink('alternate', 'zh-CN', base);
+    upsertLink('alternate', 'en', urlEn);
+    upsertLink('alternate', 'x-default', base);
+
+    const ld = {
+      '@context': 'https://schema.org', '@type': 'VideoGame',
+      name: nameCn, alternateName: nameEn, url: base,
+      image: DOMAIN + '/' + g.cover, genre: genre, gamePlatform: isEn ? catLabelEn : catLabel,
+      description: desc,
+    };
+    let s = document.getElementById('seo-ld-game');
+    if (!s) { s = document.createElement('script'); s.type = 'application/ld+json'; s.id = 'seo-ld-game'; document.head.appendChild(s); }
+    s.textContent = JSON.stringify(ld);
+  }
+
   function renderPlaceholder() {
     gameEl.style.display = 'none';
     phEl.style.display = 'grid';
@@ -248,6 +305,7 @@
   function renderAll() {
     renderTitle();
     renderRelated();
+    renderSEO();
     const canEmu = (game.cat === 'fc' || game.cat === 'md') && game.rom;
     if (canEmu) mountEmulatorJS(game);
     else renderPlaceholder();
@@ -260,6 +318,7 @@
   window.__onLang = function () {
     renderTitle();
     renderRelated();
+    renderSEO();
     if (!((game.cat === 'fc' || game.cat === 'md') && game.rom)) renderPlaceholder();
     I18N.apply();
   };

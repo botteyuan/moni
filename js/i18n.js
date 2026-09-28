@@ -107,8 +107,17 @@
     },
   };
 
+  // 优先读 URL 的 ?lang= 参数（便于 Google 分别索引中/英版），其次 localStorage，最后默认中文
+  function langFromURL() {
+    try {
+      const l = new URLSearchParams(location.search).get('lang');
+      if (l === 'en' || l === 'cn') return l;
+    } catch (e) {}
+    return null;
+  }
+
   const I18N = {
-    lang: localStorage.getItem('monigames_lang') || 'cn',
+    lang: langFromURL() || localStorage.getItem('monigames_lang') || 'cn',
     t(key) {
       return (STR[this.lang] && STR[this.lang][key]) || STR.cn[key] || key;
     },
@@ -116,12 +125,19 @@
       if (!STR[l]) l = 'cn';
       this.lang = l;
       localStorage.setItem('monigames_lang', l);
-      document.documentElement.lang = l === 'cn' ? 'zh-CN' : 'en';
+      // 同步到 URL，使每种语言有独立可索引地址（保留 id/cat/q 等已有参数）
+      try {
+        const u = new URL(location.href);
+        if (l === 'cn') u.searchParams.delete('lang');
+        else u.searchParams.set('lang', l);
+        history.replaceState(null, '', u.toString());
+      } catch (e) {}
       this.apply();
       if (typeof window.__onLang === 'function') window.__onLang();
     },
     apply() {
       document.documentElement.setAttribute('data-lang', this.lang);
+      document.documentElement.lang = this.lang === 'cn' ? 'zh-CN' : 'en';
       document.querySelectorAll('[data-i18n]').forEach((el) => {
         el.textContent = this.t(el.getAttribute('data-i18n'));
       });

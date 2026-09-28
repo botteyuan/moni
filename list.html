@@ -3,7 +3,32 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title data-i18n="list.title">游戏列表</title>
+  <title>全部游戏列表 | 小霸王网页模拟器</title>
+  <meta name="description" content="浏览全部 FC 红白机与世嘉 MD 游戏，按机种分类，支持名称与标签搜索，点击即玩。" />
+  <meta name="keywords" content="FC游戏列表,MD游戏列表,红白机游戏,世嘉游戏,在线游戏,网页模拟器" />
+  <meta name="author" content="monigames" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://www.webplaygame.tech/list.html" />
+  <link rel="alternate" hreflang="zh-CN" href="https://www.webplaygame.tech/list.html" />
+  <link rel="alternate" hreflang="en" href="https://www.webplaygame.tech/list.html?lang=en" />
+  <link rel="alternate" hreflang="x-default" href="https://www.webplaygame.tech/list.html" />
+  <meta name="theme-color" content="#0b0b16" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="小霸王网页模拟器" />
+  <meta property="og:title" content="全部游戏列表 | 小霸王网页模拟器" />
+  <meta property="og:description" content="浏览全部 FC 红白机与世嘉 MD 游戏，按机种分类，支持搜索，点击即玩。" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:url" content="https://www.webplaygame.tech/list.html" />
+  <meta property="og:image" content="https://www.webplaygame.tech/assets/favicon.svg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="全部游戏列表 | 小霸王网页模拟器" />
+  <meta name="twitter:description" content="浏览全部 FC 红白机与世嘉 MD 游戏，按机种分类，支持搜索，点击即玩。" />
+  <meta name="twitter:image" content="https://www.webplaygame.tech/assets/favicon.svg" />
+
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -23,10 +48,37 @@
 
   <div id="site-footer"></div>
 
-  <script src="js/i18n.js?v=20260926a"></script>
-  <script src="js/data.js?v=20260925u"></script>
+  <script src="js/i18n.js?v=20260928c"></script>
+  <script src="js/data.js?v=20260928b"></script>
   <script src="js/layout.js?v=20260923b"></script>
   <script>
+    // 中/英版独立标题与描述，保证 ?lang=en 被抓取时呈现英文元数据
+    const PAGE_META = {
+      cn: {
+        title: '全部游戏列表 | 小霸王网页模拟器',
+        desc: '浏览全部 FC 红白机与世嘉 MD 游戏，按机种分类，支持名称与标签搜索，点击即玩。',
+        ogTitle: '全部游戏列表 | 小霸王网页模拟器',
+        ogDesc: '浏览全部 FC 红白机与世嘉 MD 游戏，按机种分类，支持搜索，点击即玩。',
+      },
+      en: {
+        title: 'All Games | SUBOR Web Emulator',
+        desc: 'Browse all NES/FC and Sega Mega Drive/MD games, filter by platform, search by name or tag, and play instantly in your browser.',
+        ogTitle: 'All Games | SUBOR Web Emulator',
+        ogDesc: 'Browse all NES/FC and Sega MD games, filter by platform, search and play instantly.',
+      },
+    };
+    function applyLangMeta() {
+      const m = PAGE_META[I18N.lang] || PAGE_META.cn;
+      document.title = m.title;
+      const set = (sel, c) => { const e = document.head.querySelector(sel); if (e) e.setAttribute('content', c); };
+      set('meta[name="description"]', m.desc);
+      set('meta[property="og:title"]', m.ogTitle);
+      set('meta[property="og:description"]', m.ogDesc);
+      set('meta[name="twitter:title"]', m.ogTitle);
+      set('meta[name="twitter:description"]', m.ogDesc);
+      set('meta[property="og:locale"]', I18N.lang === 'cn' ? 'zh_CN' : 'en_US');
+    }
+
     function getParams() {
       const p = new URLSearchParams(location.search);
       return { cat: p.get('cat') || '', q: p.get('q') || '' };
@@ -72,11 +124,36 @@
         count.textContent = `${I18N.t('list.results')} ${list.length} ${I18N.t('list.games')}`;
       }
       I18N.apply();
+      applyLangMeta();
     }
 
     renderChrome();
     renderList();
     window.__onLang = renderList;
+
+    // ---- SEO 结构化数据：CollectionPage + 游戏 ItemList ----
+    (function injectSEOLD() {
+      const DOMAIN = 'https://www.webplaygame.tech';
+      const games = SITE.GAMES.map((g, i) => ({
+        '@type': 'ListItem', position: i + 1,
+        item: {
+          '@type': 'VideoGame',
+          name: g.title.cn, alternateName: g.title.en,
+          url: DOMAIN + '/play.html?id=' + g.id,
+          image: DOMAIN + '/' + g.cover,
+          genre: g.tags.cn,
+          gamePlatform: g.cat === 'fc' ? 'FC/NES' : 'MD/Genesis',
+        },
+      }));
+      const ld = [
+        { '@context': 'https://schema.org', '@type': 'CollectionPage', name: '全部游戏列表', url: DOMAIN + '/list.html' },
+        { '@context': 'https://schema.org', '@type': 'ItemList', itemListElement: games },
+      ];
+      const s = document.createElement('script');
+      s.type = 'application/ld+json';
+      s.textContent = JSON.stringify(ld);
+      document.head.appendChild(s);
+    })();
   </script>
 </body>
 </html>

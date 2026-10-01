@@ -45,8 +45,8 @@
     const urlEn = base + '&lang=en';                       // 英文版地址
     const isEn = I18N.lang === 'en';
     const nameCn = g.title.cn, nameEn = g.title.en;
-    const catLabel = g.cat === 'fc' ? 'FC/红白机' : 'MD/世嘉';
-    const catLabelEn = g.cat === 'fc' ? 'NES/FC' : 'Sega MD';
+    const catLabel = g.cat === 'arcade' ? '街机/Arcade' : (g.cat === 'sfc' ? '超任/SFC' : (g.cat === 'fc' ? 'FC/红白机' : 'MD/世嘉'));
+    const catLabelEn = g.cat === 'arcade' ? 'Arcade' : (g.cat === 'sfc' ? 'SNES/SFC' : (g.cat === 'fc' ? 'NES/FC' : 'Sega MD'));
     const genre = g.tags ? (g.tags[I18N.lang] || g.tags.cn) : '';
     const titleStr = isEn
       ? `${nameEn} — Play Online | SUBOR Web Emulator`
@@ -125,8 +125,8 @@
 
     // EmulatorJS 配置（必须在其 loader 脚本执行前设置）
     window.EJS_player = '#game';
-    // 按机种选择核心：FC -> nes(fceumm) / MD -> segaMD(genesis_plus_gx)
-    window.EJS_core = (g.cat === 'md') ? 'segaMD' : 'nes';
+    // 按机种选择核心：FC -> nes(fceumm) / MD -> segaMD(genesis_plus_gx) / 街机 -> fbneo
+    window.EJS_core = (g.cat === 'arcade') ? 'fbneo' : (g.cat === 'md' ? 'segaMD' : (g.cat === 'sfc' ? 'snes9x' : 'nes'));
     window.EJS_gameUrl = new URL(encodeURI(g.rom), location.href).href;
     window.EJS_gameName = titleOf();
     window.EJS_pathtodata = 'vendor/emulatorjs/data/'; // 本地自托管：核心与脚本同源，不再依赖外网 CDN
@@ -136,8 +136,11 @@
     window.EJS_language = (I18N.lang === 'en') ? 'en-US' : 'zh-CN';
 
     // 默认键位（龙哥指定）：FC 与 MD 各自独立定义，互不干扰
-    // FC：2 键（A 在右、B 在左）→ A=K / B=J
-    // MD：3 键（A/B/C 横排）→ A=J / B=K / C=L（J/K/L 对应手柄 A/B/C 三连键）
+    // FC：2 键（A 在右、B 在左）→ A=K / B=J（含连发）
+    // MD：6 键（A/B/C 下排 + X/Y/Z 上排）→ A=J / B=K / C=L / X=M / Y=, / Z=.
+    //   索引严格对齐 EmulatorJS 自家 genesis 方案（A=1,B=0,C=8,X=10,Y=9,Z=11），
+    //   因为 keyboard 与 simulateInput 都按数组索引定位 genesis 键，标签 value2 仅用于手柄显示。
+    //   逗号/句号必须用 keyMap 名 'comma'/'period'（字面 ','/'.' 查不到会被删）。
     // 注：EJS_defaultControls 整体替换默认映射，故需完整列出 gamepad0；未用的键位填空
     window.EJS_defaultControls = (function () {
       const FC = {
@@ -172,26 +175,26 @@
       };
       const MD = {
         0: { value: 'k', value2: 'BUTTON_2' },            // B 键 = K
-        1: { value: 's', value2: 'BUTTON_4' },
-        2: { value: 'u', value2: 'SELECT' },              // Select = U
+        1: { value: 'j', value2: 'BUTTON_1' },             // A 键 = J
+        2: { value: 'u', value2: 'SELECT' },              // Mode = U（MD 无 Select，此键为 Mode）
         3: { value: 'i', value2: 'START' },               // Start = I
         4: { value: 'w', value2: 'DPAD_UP' },             // 上 = W
         5: { value: 's', value2: 'DPAD_DOWN' },           // 下 = S
         6: { value: 'a', value2: 'DPAD_LEFT' },           // 左 = A
         7: { value: 'd', value2: 'DPAD_RIGHT' },          // 右 = D
-        8: { value: 'j', value2: 'BUTTON_1' },             // A 键 = J
-        9: { value: 'l', value2: 'BUTTON_3' },             // C 键 = L
-        10: { value: 'q', value2: 'LEFT_TOP_SHOULDER' },
-        11: { value: 'e', value2: 'RIGHT_TOP_SHOULDER' },
+        8: { value: 'l', value2: 'BUTTON_3' },             // C 键 = L
+        9: { value: 'comma', value2: 'BUTTON_4' },        // Y 键 = ,（逗号）
+        10: { value: 'm', value2: 'LEFT_TOP_SHOULDER' },  // X 键 = M
+        11: { value: 'period', value2: 'RIGHT_TOP_SHOULDER' }, // Z 键 = .（句号）
         12: { value: 'tab', value2: 'LEFT_BOTTOM_SHOULDER' },
         13: { value: 'r', value2: 'RIGHT_BOTTOM_SHOULDER' },
         14: { value: '', value2: 'LEFT_STICK' },
         15: { value: '', value2: 'RIGHT_STICK' },
-        16: { value: 'h', value2: 'LEFT_STICK_X:+1' },
-        17: { value: 'f', value2: 'LEFT_STICK_X:-1' },
-        18: { value: 'g', value2: 'LEFT_STICK_Y:+1' },
-        19: { value: 't', value2: 'LEFT_STICK_Y:-1' },
-        20: { value: 'l', value2: 'RIGHT_STICK_X:+1' },
+        16: { value: '', value2: 'LEFT_STICK_X:+1' },
+        17: { value: '', value2: 'LEFT_STICK_X:-1' },
+        18: { value: '', value2: 'LEFT_STICK_Y:+1' },
+        19: { value: '', value2: 'LEFT_STICK_Y:-1' },
+        20: { value: '', value2: 'RIGHT_STICK_X:+1' },
         21: { value: '', value2: 'RIGHT_STICK_X:-1' },
         22: { value: '', value2: 'RIGHT_STICK_Y:+1' },
         23: { value: '', value2: 'RIGHT_STICK_Y:-1' },
@@ -200,18 +203,82 @@
         26: { value: '3' },
         27: {}, 28: {}, 29: {}
       };
-      const base = (g.cat === 'md') ? MD : FC;
+      // 街机（fbneo）：retropad 索引与 FC/MD 一致（0=B,1=Y,2=Select,3=Start,4-7=方向,8=A,9=X,10=L,11=R）
+      // 通用街机布局：方向 WASD；J/K/L 为三个动作键；U=投币(Coin)、I=开始；5/1 为 MAME 默认投币/开始备用键
+      const ARCADE = {
+        0: { value: 'j', value2: 'BUTTON_2' },
+        1: { value: 'k', value2: 'BUTTON_1' },
+        2: { value: 'u', value2: 'SELECT' },
+        3: { value: 'i', value2: 'START' },
+        4: { value: 'w', value2: 'DPAD_UP' },
+        5: { value: 's', value2: 'DPAD_DOWN' },
+        6: { value: 'a', value2: 'DPAD_LEFT' },
+        7: { value: 'd', value2: 'DPAD_RIGHT' },
+        8: { value: 'l', value2: 'BUTTON_3' },
+        9: { value: 'comma', value2: 'BUTTON_4' },
+        10: { value: 'm', value2: 'LEFT_TOP_SHOULDER' },
+        11: { value: 'period', value2: 'RIGHT_TOP_SHOULDER' },
+        12: { value: '', value2: 'LEFT_BOTTOM_SHOULDER' },
+        13: { value: 'r', value2: 'RIGHT_BOTTOM_SHOULDER' },
+        14: { value: '', value2: 'LEFT_STICK' },
+        15: { value: '', value2: 'RIGHT_STICK' },
+        16: { value: '', value2: 'LEFT_STICK_X:+1' },
+        17: { value: '', value2: 'LEFT_STICK_X:-1' },
+        18: { value: '', value2: 'LEFT_STICK_Y:+1' },
+        19: { value: '', value2: 'LEFT_STICK_Y:-1' },
+        20: { value: '', value2: 'RIGHT_STICK_X:+1' },
+        21: { value: '', value2: 'RIGHT_STICK_X:-1' },
+        22: { value: '', value2: 'RIGHT_STICK_Y:+1' },
+        23: { value: '', value2: 'RIGHT_STICK_Y:-1' },
+        24: { value: '5' },
+        25: { value: '1' },
+        26: { value: '6' },
+        27: {}, 28: {}, 29: {}
+      };
+      // SFC（snes9x）：RetroPad 索引与街机一致（0=B,1=Y,2=Select,3=Start,4-7=方向,8=A,9=X,10=L,11=R）
+      // 通用布局：方向 WASD；B=J / Y=K / A=L / X=H；L/R 肩键=逗号/句号；U=Select、I=Start
+      const SFC = {
+        0: { value: 'j', value2: 'BUTTON_2' },
+        1: { value: 'k', value2: 'BUTTON_1' },
+        2: { value: 'u', value2: 'SELECT' },
+        3: { value: 'i', value2: 'START' },
+        4: { value: 'w', value2: 'DPAD_UP' },
+        5: { value: 's', value2: 'DPAD_DOWN' },
+        6: { value: 'a', value2: 'DPAD_LEFT' },
+        7: { value: 'd', value2: 'DPAD_RIGHT' },
+        8: { value: 'l', value2: 'BUTTON_3' },
+        9: { value: 'h', value2: 'BUTTON_4' },
+        10: { value: 'comma', value2: 'LEFT_TOP_SHOULDER' },
+        11: { value: 'period', value2: 'RIGHT_TOP_SHOULDER' },
+        12: { value: '', value2: 'LEFT_BOTTOM_SHOULDER' },
+        13: { value: 'r', value2: 'RIGHT_BOTTOM_SHOULDER' },
+        14: { value: '', value2: 'LEFT_STICK' },
+        15: { value: '', value2: 'RIGHT_STICK' },
+        16: { value: '', value2: 'LEFT_STICK_X:+1' },
+        17: { value: '', value2: 'LEFT_STICK_X:-1' },
+        18: { value: '', value2: 'LEFT_STICK_Y:+1' },
+        19: { value: '', value2: 'LEFT_STICK_Y:-1' },
+        20: { value: '', value2: 'RIGHT_STICK_X:+1' },
+        21: { value: '', value2: 'RIGHT_STICK_X:-1' },
+        22: { value: '', value2: 'RIGHT_STICK_Y:+1' },
+        23: { value: '', value2: 'RIGHT_STICK_Y:-1' },
+        24: { value: '1' },
+        25: { value: '2' },
+        26: { value: '3' },
+        27: {}, 28: {}, 29: {}
+      };
+      const base = (g.cat === 'arcade') ? ARCADE : (g.cat === 'sfc' ? SFC : (g.cat === 'md' ? MD : FC));
       return { 0: base, 1: {}, 2: {}, 3: {} };
     })();
 
     // 连发键（turbo）：直接调 EmulatorJS 内部 gameManager.simulateInput(player, btnIdx, state)，
     // 绕过合成 KeyboardEvent——EJS 按键匹配依赖 e.keyCode（emulator.js:3344），合成事件的 keyCode
     // 在部分浏览器/焦点状态下不可靠；直接调内部 API 最稳，且不受 keyboardInput 设置影响。
-    // btnIdx 与 EJS_defaultControls 对齐：A=BUTTON_1=8, B=BUTTON_2=0, C=BUTTON_3=9
+    // btnIdx 与 EJS_defaultControls 对齐：FC A=BUTTON_1=8, B=BUTTON_2=0
+    // 仅 FC 保留连发；MD 按需求不加连发（X/Y/Z 已是独立键）。
     (function setupTurbo() {
-      const FC_TURBO = { ',': 8, 'm': 0 };            // 连发 A / 连发 B
-      const MD_TURBO = { ',': 8, 'm': 0, '.': 9 };    // 连发 A / 连发 B / 连发 C
-      const map = (g.cat === 'md') ? MD_TURBO : FC_TURBO;
+      const FC_TURBO = { ',': 8, 'm': 0 };            // 连发 A / 连发 B（仅 FC）
+      const map = (g.cat === 'fc') ? FC_TURBO : {};
       const timers = {};
       const press = (idx, on) => {
         const e = window.EJS_emulator;
@@ -240,8 +307,8 @@
     })();
 
     // 操作说明按机种分别取文案（FC / MD 独立），内核名也随机种显示
-    const hint = (g.cat === 'md') ? I18N.t('play.emuHintMd') : I18N.t('play.emuHint');
-    const using = (g.cat === 'md') ? I18N.t('play.usingMd') : I18N.t('play.using');
+    const hint = (g.cat === 'arcade') ? I18N.t('play.emuHintArcade') : (g.cat === 'sfc' ? I18N.t('play.emuHintSfc') : (g.cat === 'md' ? I18N.t('play.emuHintMd') : I18N.t('play.emuHint')));
+    const using = (g.cat === 'arcade') ? I18N.t('play.usingArcade') : (g.cat === 'sfc' ? I18N.t('play.usingSfc') : (g.cat === 'md' ? I18N.t('play.usingMd') : I18N.t('play.using')));
     controlsEl.innerHTML =
       '<h3>' + I18N.t('play.help') + '</h3>' +
       '<p class="muted">' + using + '</p>' +
@@ -306,7 +373,7 @@
     renderTitle();
     renderRelated();
     renderSEO();
-    const canEmu = (game.cat === 'fc' || game.cat === 'md') && game.rom;
+    const canEmu = (game.cat === 'fc' || game.cat === 'md' || game.cat === 'sfc' || game.cat === 'arcade') && game.rom;
     if (canEmu) mountEmulatorJS(game);
     else renderPlaceholder();
     I18N.apply();
@@ -319,7 +386,7 @@
     renderTitle();
     renderRelated();
     renderSEO();
-    if (!((game.cat === 'fc' || game.cat === 'md') && game.rom)) renderPlaceholder();
+    if (!((game.cat === 'fc' || game.cat === 'md' || game.cat === 'sfc' || game.cat === 'arcade') && game.rom)) renderPlaceholder();
     I18N.apply();
   };
 })();

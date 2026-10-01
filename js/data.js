@@ -3,6 +3,8 @@
   const CATEGORIES = [
     { id: 'fc', icon: '🕹️', color: '#ff2e88' },
     { id: 'md', icon: '🟦', color: '#1f6feb' },
+    { id: 'sfc', icon: '🟪', color: '#9b59b6' },
+    { id: 'arcade', icon: '🎰', color: '#f5a623' },
   ];
 
   const GAMES = [
@@ -61,6 +63,30 @@
     { id: 8123, cat: 'md', title: { cn: '火枪英雄', en: 'Gunstar Heroes' }, rom: 'roms/md/gunstarheroes.bin', cover: 'assets/covers/md_gunstarheroes.png', tags: { cn: '射击', en: 'Shooter' }, plays: 1000000 },
     { id: 8124, cat: 'md', title: { cn: '魂斗罗·铁血兵团（繁体）', en: 'Contra: Hard Corps (TCN)' }, rom: 'roms/md/contra_hardcorps_tcn.bin', cover: 'assets/covers/md_contra_tcn.png', tags: { cn: '射击', en: 'Shooter' }, plays: 770000 },
 
+    // ---- 街机 / Arcade（fbneo 核心，本地可运行 ROM） ----
+    { id: 9001, cat: 'arcade', title: { cn: '赤色要塞', en: 'Jackal' }, rom: 'roms/arcade/jackal.zip', cover: 'assets/covers/arcade_jackal.png', tags: { cn: '射击', en: 'Shooter' }, plays: 500000 },
+    { id: 9002, cat: 'arcade', title: { cn: '圆桌骑士', en: 'Knights of the Round' }, rom: 'roms/arcade/knights.zip', cover: 'assets/covers/arcade_knights.png', tags: { cn: '清版动作', en: 'Beat ' + "'" + 'em up' }, plays: 620000 },
+    { id: 9003, cat: 'arcade', title: { cn: '街头霸王2', en: 'Street Fighter II' }, rom: 'roms/arcade/sf2.zip', cover: 'assets/covers/arcade_sf2.png', tags: { cn: '格斗', en: 'Fighting' }, plays: 1500000 },
+    { id: 9004, cat: 'arcade', title: { cn: '凯迪拉克与恐龙', en: 'Cadillacs and Dinosaurs' }, rom: 'roms/arcade/dino.zip', cover: 'assets/covers/arcade_dino.png', tags: { cn: '清版动作', en: 'Beat ' + "'" + 'em up' }, plays: 700000 },
+    { id: 9007, cat: 'arcade', title: { cn: '魔剑', en: 'Magic Sword' }, rom: 'roms/arcade/msword.zip', cover: 'assets/covers/arcade_msword.png', tags: { cn: '清版动作', en: 'Beat ' + "'" + 'em up' }, plays: 480000 },
+    { id: 9008, cat: 'arcade', title: { cn: '摔角霸王', en: 'Saturday Night Slam Masters' }, rom: 'roms/arcade/slammast.zip', cover: 'assets/covers/arcade_slammast.png', tags: { cn: '格斗', en: 'Fighting' }, plays: 590000 },
+
+    // ---- SFC / 超任（snes9x 核心，本地可运行 ROM） ----
+    { id: 9101, cat: 'sfc', title: { cn: '超级可变几何', en: 'Super Variable Geo' }, rom: 'roms/sfc/Super Variable Geo (J).smc', cover: 'assets/covers/sfc_9101.png', tags: { cn: '格斗', en: 'Fighting' }, plays: 540000 },
+    { id: 9102, cat: 'sfc', title: { cn: '光明传说1', en: 'Legend of Light 1' }, rom: 'roms/sfc/光明传说1.smc', cover: 'assets/covers/sfc_9102.png', tags: { cn: '角色扮演', en: 'RPG' }, plays: 360000 },
+    { id: 9103, cat: 'sfc', title: { cn: '光明传说2', en: 'Legend of Light 2' }, rom: 'roms/sfc/光明传说2.smc', cover: 'assets/covers/sfc_9103.png', tags: { cn: '角色扮演', en: 'RPG' }, plays: 380000 },
+    { id: 9104, cat: 'sfc', title: { cn: '劫匪枪战', en: 'Bandit Shootout' }, rom: 'roms/sfc/劫匪枪战.smc', cover: 'assets/covers/sfc_9104.png', tags: { cn: '射击', en: 'Shooter' }, plays: 310000 },
+    { id: 9105, cat: 'sfc', title: { cn: '封印之使徒1', en: 'Sealed Apostle 1' }, rom: 'roms/sfc/封印之使徒1.smc', cover: 'assets/covers/sfc_9105.png', tags: { cn: '角色扮演', en: 'RPG' }, plays: 340000 },
+    { id: 9106, cat: 'sfc', title: { cn: '封印之使徒2', en: 'Sealed Apostle 2' }, rom: 'roms/sfc/封印之使徒2.smc', cover: 'assets/covers/sfc_9106.png', tags: { cn: '角色扮演', en: 'RPG' }, plays: 350000 },
+    { id: 9107, cat: 'sfc', title: { cn: '暗龙传说', en: 'Dark Dragon Legend' }, rom: 'roms/sfc/暗龙传说.smc', cover: 'assets/covers/sfc_9107.png', tags: { cn: '角色扮演', en: 'RPG' }, plays: 330000 },
+    { id: 9108, cat: 'sfc', title: { cn: '狂飙骑士', en: 'Racing Knight' }, rom: 'roms/sfc/狂飙骑士.smc', cover: 'assets/covers/sfc_9108.png', tags: { cn: '赛车', en: 'Racing' }, plays: 290000 },
+    { id: 9109, cat: 'sfc', title: { cn: '精英军团', en: 'Elite Legion' }, rom: 'roms/sfc/精英军团.smc', cover: 'assets/covers/sfc_9109.png', tags: { cn: '策略', en: 'Strategy' }, plays: 270000 },
+    { id: 9110, cat: 'sfc', title: { cn: '超级3D棒球', en: 'Super 3D Baseball' }, rom: 'roms/sfc/超级3D棒球.smc', cover: 'assets/covers/sfc_9110.png', tags: { cn: '体育', en: 'Sports' }, plays: 300000 },
+    { id: 9111, cat: 'sfc', title: { cn: '超级异形战机', en: 'Super Aleste' }, rom: 'roms/sfc/超级异形战机.smc', cover: 'assets/covers/sfc_9111.png', tags: { cn: '射击', en: 'Shooter' }, plays: 320000 },
+    { id: 9112, cat: 'sfc', title: { cn: '金属战队', en: 'Metal Squad' }, rom: 'roms/sfc/金属战队.smc', cover: 'assets/covers/sfc_9112.png', tags: { cn: '动作', en: 'Action' }, plays: 280000 },
+    { id: 9113, cat: 'sfc', title: { cn: '革命X', en: 'Revolution X' }, rom: 'roms/sfc/革命X.smc', cover: 'assets/covers/sfc_9113.png', tags: { cn: '射击', en: 'Shooter' }, plays: 260000 },
+    { id: 9114, cat: 'sfc', title: { cn: '鬼神降临传', en: 'Demon God Descent' }, rom: 'roms/sfc/鬼神降临传.smc', cover: 'assets/covers/sfc_9114.png', tags: { cn: '角色扮演', en: 'RPG' }, plays: 250000 },
+    { id: 9115, cat: 'sfc', title: { cn: '龙虎之拳', en: 'Art of Fighting' }, rom: 'roms/sfc/龙虎之拳.smc', cover: 'assets/covers/sfc_9115.png', tags: { cn: '格斗', en: 'Fighting' }, plays: 560000 },
 
   ];
 

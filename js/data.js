@@ -43,6 +43,10 @@
     { id: 7040, cat: 'fc', title: { cn: '危机部队', en: 'Crisis Force (J)' }, rom: 'roms/fc/Crisis Force (J).nes', cover: 'assets/covers/fc_crisisforce.png', tags: { cn: '射击', en: 'Shooter' }, plays: 390000 },
     { id: 7041, cat: 'fc', title: { cn: '烈夏·Recca', en: "Summer Carnival '92 - Recca" }, rom: "roms/fc/Summer Carnival '92 - Recca (J).nes", cover: 'assets/covers/fc_recca.png', tags: { cn: '射击', en: 'Shooter' }, plays: 405000 },
     { id: 7042, cat: 'fc', title: { cn: '空中鲨鱼', en: 'Sky Shark' }, rom: 'roms/fc/7af316a3.nes', cover: 'assets/covers/fc_skyshark.png', tags: { cn: '射击', en: 'Shooter' }, plays: 415000 },
+    { id: 7043, cat: 'fc', title: { cn: '坦克大战', en: 'Battle City' }, rom: 'roms/fc/坦克大战.nes', cover: 'assets/covers/fc_tank.png', tags: { cn: '射击', en: 'Shooter' }, plays: 760000 },
+    { id: 7044, cat: 'fc', title: { cn: '弹珠台', en: 'Pinball' }, rom: 'roms/fc/弹珠台.NES', cover: 'assets/covers/fc_pinball.png', tags: { cn: '休闲', en: 'Casual' }, plays: 360000 },
+    { id: 7045, cat: 'fc', title: { cn: '花式撞球（中文版）', en: 'Trick Billiards' }, rom: 'roms/fc/花式撞球 中文版.nes', cover: 'assets/covers/fc_billiards.png', tags: { cn: '益智', en: 'Puzzle' }, plays: 320000 },
+    { id: 7046, cat: 'fc', title: { cn: '超级马里奥兄弟', en: 'Super Mario Bros' }, rom: 'roms/fc/超级马利兄弟.NES', cover: 'assets/covers/fc_mario.png', tags: { cn: '平台', en: 'Platformer' }, plays: 1280000 },
 
     // ---- MD / 世嘉 ----
     { id: 8109, cat: 'md', title: { cn: '爱登斯家族', en: 'The Addams Family' }, rom: 'roms/md/adamsfamily.bin', cover: 'assets/covers/md_adamsfamily.png', tags: { cn: '平台', en: 'Platformer' }, plays: 420000 },

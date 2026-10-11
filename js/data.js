@@ -47,6 +47,11 @@
     { id: 7044, cat: 'fc', title: { cn: '弹珠台', en: 'Pinball' }, rom: 'roms/fc/弹珠台.NES', cover: 'assets/covers/fc_pinball.png', tags: { cn: '休闲', en: 'Casual' }, plays: 360000 },
     { id: 7045, cat: 'fc', title: { cn: '花式撞球（中文版）', en: 'Trick Billiards' }, rom: 'roms/fc/花式撞球 中文版.nes', cover: 'assets/covers/fc_billiards.png', tags: { cn: '益智', en: 'Puzzle' }, plays: 320000 },
     { id: 7046, cat: 'fc', title: { cn: '超级马里奥兄弟', en: 'Super Mario Bros' }, rom: 'roms/fc/超级马利兄弟.NES', cover: 'assets/covers/fc_mario.png', tags: { cn: '平台', en: 'Platformer' }, plays: 1280000 },
+    { id: 7047, cat: 'fc', title: { cn: '中东战争', en: 'Middle East War' }, rom: 'roms/fc/[096]  射击类 - 中东战争.NES', cover: 'assets/covers/fc_middleeast.png', tags: { cn: '射击', en: 'Shooter' }, plays: 380000 },
+    { id: 7048, cat: 'fc', title: { cn: '星空飞箭', en: 'Star Arrow' }, rom: 'roms/fc/[097]  射击类 - 星空飞箭.NES', cover: 'assets/covers/fc_stararrow.png', tags: { cn: '射击', en: 'Shooter' }, plays: 350000 },
+    { id: 7049, cat: 'fc', title: { cn: '星际战机', en: 'Interstellar Fighter' }, rom: 'roms/fc/[098]  射击类 - 星际战机.NES', cover: 'assets/covers/fc_interstellar.png', tags: { cn: '射击', en: 'Shooter' }, plays: 360000 },
+    { id: 7050, cat: 'fc', title: { cn: '小蜜蜂', en: 'Galaxian' }, rom: 'roms/fc/[099]  射击类 - 小蜜蜂.NES', cover: 'assets/covers/fc_galaxian.png', tags: { cn: '射击', en: 'Shooter' }, plays: 410000 },
+    { id: 7051, cat: 'fc', title: { cn: '未来小子', en: 'Future Boy' }, rom: 'roms/fc/[100]  射击类 - 未来小子.NES', cover: 'assets/covers/fc_futureboy.png', tags: { cn: '射击', en: 'Shooter' }, plays: 330000 },
 
     // ---- MD / 世嘉 ----
     { id: 8109, cat: 'md', title: { cn: '爱登斯家族', en: 'The Addams Family' }, rom: 'roms/md/adamsfamily.bin', cover: 'assets/covers/md_adamsfamily.png', tags: { cn: '平台', en: 'Platformer' }, plays: 420000 },

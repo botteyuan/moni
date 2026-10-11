@@ -49,11 +49,11 @@
     const catLabelEn = g.cat === 'arcade' ? 'Arcade' : (g.cat === 'sfc' ? 'SNES/SFC' : (g.cat === 'fc' ? 'NES/FC' : 'Sega MD'));
     const genre = g.tags ? (g.tags[I18N.lang] || g.tags.cn) : '';
     const titleStr = isEn
-      ? `${nameEn} — Play Online | SUBOR Web Emulator`
-      : `${nameCn} 在线玩 | 小霸王网页模拟器`;
+      ? `${nameEn} — Play Online in Browser | SUBOR Web Emulator`
+      : `${nameCn} 网页版在线玩 | 小霸王网页模拟器`;
     const desc = isEn
-      ? `Play ${nameEn} (${nameCn}) online — a classic ${catLabelEn} game. Instant browser play with keyboard support.`
-      : `在线玩《${nameCn}》(${nameEn}) — ${catLabel}经典游戏，网页模拟器即开即玩，支持键盘操作。`;
+      ? `Play ${nameEn} (${nameCn}) online in your browser — a classic ${catLabelEn} game. Instant play, keyboard supported.`
+      : `在线玩《${nameCn}》(${nameEn}) — ${catLabel}经典游戏，网页版模拟器即开即玩，支持键盘操作。`;
     document.title = titleStr;
 
     const upsertMeta = (attr, val, content) => {

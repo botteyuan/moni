@@ -40,6 +40,9 @@
       s.parentNode.insertBefore(hm, s);
     })();
   </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5510712458615762"
+    crossorigin="anonymous"></script>
 </head>
 <body>
   <div id="site-header"></div>
@@ -59,7 +62,7 @@
   <div id="site-footer"></div>
 
   <script src="js/i18n.js?v=20261001j"></script>
-  <script src="js/data.js?v=20261001l"></script>
+  <script src="js/data.js?v=20261001m"></script>
   <script src="js/layout.js?v=20260923b"></script>
   <script>
     // 中/英版独立标题与描述，保证 ?lang=en 被抓取时呈现英文元数据
@@ -77,16 +80,49 @@
         ogDesc: 'Browse all NES/FC and Sega MD games, filter by platform, search and play instantly.',
       },
     };
-    function applyLangMeta() {
-      const m = PAGE_META[I18N.lang] || PAGE_META.cn;
+    const CAT_META = {
+      fc: {
+        cn: { title: 'FC红白机在线玩 | 网页版FC模拟器', desc: '免费在线玩 FC 红白机（NES）经典游戏，魂斗罗、超级玛丽、双截龙、冒险岛等，网页即开即玩，支持键盘操作。', kw: 'FC在线玩,网页版FC,FC游戏在线玩,FC红白机,NES模拟器网页版,魂斗罗在线玩,超级玛丽网页版,双截龙在线玩' },
+        en: { title: 'Play NES/FC Online | Web Emulator', desc: 'Play classic NES/FC games online in your browser — Contra, Super Mario, Double Dragon, Adventure Island and more. Instant play, keyboard support.', kw: 'play NES online,FC games online,NES emulator web,Contra online,Super Mario online,Double Dragon online' }
+      },
+      md: {
+        cn: { title: 'MD世嘉在线玩 | 网页版MD模拟器', desc: '免费在线玩世嘉 MD（Genesis）经典游戏，火枪英雄、格斗、清版动作等，网页即开即玩，支持键盘操作。', kw: 'MD游戏在线,MD模拟器网页版,世嘉在线玩,MD世嘉,Genesis模拟器网页版,火枪英雄在线玩' },
+        en: { title: 'Play Sega MD/Genesis Online | Web Emulator', desc: 'Play classic Sega Mega Drive/Genesis games online — Gunstar Heroes and more. Instant browser play, keyboard support.', kw: 'play Sega MD online,Genesis games online,MD emulator web,Gunstar Heroes online' }
+      },
+      sfc: {
+        cn: { title: 'SFC超任在线玩 | 网页版超任模拟器', desc: '免费在线玩超任 SFC（SNES）经典游戏，网页即开即玩，支持键盘操作。', kw: 'SFC模拟器网页版,超任在线玩,超任SFC,SNES模拟器网页版,SFC游戏在线玩' },
+        en: { title: 'Play SNES/SFC Online | Web Emulator', desc: 'Play classic Super Nintendo (SNES/SFC) games online in your browser. Instant play, keyboard support.', kw: 'play SNES online,SFC games online,Super Nintendo emulator web' }
+      },
+      arcade: {
+        cn: { title: '街机在线玩 | 网页版街机模拟器', desc: '免费在线玩街机（Arcade）经典游戏，街头霸王2、圆桌骑士、赤色要塞等，网页即开即玩，支持键盘操作。', kw: '街机游戏在线玩,街机模拟器网页版,街机在线玩,Arcade模拟器网页版,街头霸王2在线玩,圆桌骑士在线玩' },
+        en: { title: 'Play Arcade Online | Web Emulator', desc: 'Play classic Arcade games online — Street Fighter II, Knights of the Round and more. Instant browser play.', kw: 'play arcade online,arcade games online,Arcade emulator web,Street Fighter II online' }
+      },
+    };
+    function applyLangMeta(cat) {
+      const m = (cat && CAT_META[cat]) ? (CAT_META[cat][I18N.lang] || CAT_META[cat].cn) : (PAGE_META[I18N.lang] || PAGE_META.cn);
       document.title = m.title;
       const set = (sel, c) => { const e = document.head.querySelector(sel); if (e) e.setAttribute('content', c); };
       set('meta[name="description"]', m.desc);
-      set('meta[property="og:title"]', m.ogTitle);
-      set('meta[property="og:description"]', m.ogDesc);
-      set('meta[name="twitter:title"]', m.ogTitle);
-      set('meta[name="twitter:description"]', m.ogDesc);
+      if (m.kw) set('meta[name="keywords"]', m.kw);
+      set('meta[property="og:title"]', m.title);
+      set('meta[property="og:description"]', m.desc);
+      set('meta[name="twitter:title"]', m.title);
+      set('meta[name="twitter:description"]', m.desc);
       set('meta[property="og:locale"]', I18N.lang === 'cn' ? 'zh_CN' : 'en_US');
+      const DOMAIN = 'https://www.webplaygame.tech';
+      const base = cat ? DOMAIN + '/list.html?cat=' + cat : DOMAIN + '/list.html';
+      const urlEn = base + (cat ? '&lang=en' : '?lang=en');
+      const upsertLink = (rel, hreflang, href) => {
+        const sel = `link[rel="${rel}"]` + (hreflang ? `[hreflang="${hreflang}"]` : '');
+        let el = document.head.querySelector(sel);
+        if (!el) { el = document.createElement('link'); el.rel = rel; if (hreflang) el.hreflang = hreflang; document.head.appendChild(el); }
+        el.href = href;
+      };
+      upsertLink('canonical', null, base);
+      upsertLink('alternate', 'zh-CN', base);
+      upsertLink('alternate', 'en', urlEn);
+      upsertLink('alternate', 'x-default', base);
+      set('meta[property="og:url"]', base);
     }
 
     function getParams() {
@@ -134,7 +170,7 @@
         count.textContent = `${I18N.t('list.results')} ${list.length} ${I18N.t('list.games')}`;
       }
       I18N.apply();
-      applyLangMeta();
+      applyLangMeta(cat);
     }
 
     renderChrome();
@@ -144,6 +180,7 @@
     // ---- SEO 结构化数据：CollectionPage + 游戏 ItemList ----
     (function injectSEOLD() {
       const DOMAIN = 'https://www.webplaygame.tech';
+      const _c = new URLSearchParams(location.search).get('cat') || '';
       const games = SITE.GAMES.map((g, i) => ({
         '@type': 'ListItem', position: i + 1,
         item: {
@@ -156,7 +193,7 @@
         },
       }));
       const ld = [
-        { '@context': 'https://schema.org', '@type': 'CollectionPage', name: '全部游戏列表', url: DOMAIN + '/list.html' },
+        { '@context': 'https://schema.org', '@type': 'CollectionPage', name: _c ? SITE.catLabel(_c) : '全部游戏列表', url: _c ? DOMAIN + '/list.html?cat=' + _c : DOMAIN + '/list.html' },
         { '@context': 'https://schema.org', '@type': 'ItemList', itemListElement: games },
       ];
       const s = document.createElement('script');

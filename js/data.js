@@ -79,6 +79,10 @@
     { id: 9004, cat: 'arcade', title: { cn: '凯迪拉克与恐龙', en: 'Cadillacs and Dinosaurs' }, rom: 'roms/arcade/dino.zip', cover: 'assets/covers/arcade_dino.png', tags: { cn: '清版动作', en: 'Beat ' + "'" + 'em up' }, plays: 700000 },
     { id: 9007, cat: 'arcade', title: { cn: '魔剑', en: 'Magic Sword' }, rom: 'roms/arcade/msword.zip', cover: 'assets/covers/arcade_msword.png', tags: { cn: '清版动作', en: 'Beat ' + "'" + 'em up' }, plays: 480000 },
     { id: 9008, cat: 'arcade', title: { cn: '摔角霸王', en: 'Saturday Night Slam Masters' }, rom: 'roms/arcade/slammast.zip', cover: 'assets/covers/arcade_slammast.png', tags: { cn: '格斗', en: 'Fighting' }, plays: 590000 },
+    { id: 9009, cat: 'arcade', title: { cn: '快打旋风', en: 'Final Fight' }, rom: 'roms/arcade/ffight.zip', cover: 'assets/covers/arcade_ffight.png', tags: { cn: '清版动作', en: 'Beat ' + "'" + 'em up' }, plays: 720000 },
+    { id: 9010, cat: 'arcade', title: { cn: '日落骑士', en: 'Sunset Riders' }, rom: 'roms/arcade/ssriders.zip', cover: 'assets/covers/arcade_ssriders.png', tags: { cn: '清版动作', en: 'Beat ' + "'" + 'em up' }, plays: 530000 },
+    { id: 9011, cat: 'arcade', title: { cn: '战斧2', en: 'Golden Axe: The Revenge of Death Adder' }, rom: 'roms/arcade/ga2.zip', cover: 'assets/covers/arcade_ga2.png', tags: { cn: '清版动作', en: 'Beat ' + "'" + 'em up' }, plays: 540000 },
+    { id: 9012, cat: 'arcade', title: { cn: '魔界村2', en: "Ghouls'n Ghosts" }, rom: 'roms/arcade/ghouls.zip', cover: 'assets/covers/arcade_ghouls.png', tags: { cn: '动作', en: 'Action' }, plays: 560000 },
 
     // ---- SFC / 超任（snes9x 核心，本地可运行 ROM） ----
     { id: 9101, cat: 'sfc', title: { cn: '超级可变几何', en: 'Super Variable Geo' }, rom: 'roms/sfc/Super Variable Geo (J).smc', cover: 'assets/covers/sfc_9101.png', tags: { cn: '格斗', en: 'Fighting' }, plays: 540000 },

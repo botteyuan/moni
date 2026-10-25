@@ -52,6 +52,11 @@
     { id: 7049, cat: 'fc', title: { cn: '星际战机', en: 'Interstellar Fighter' }, rom: 'roms/fc/[098]  射击类 - 星际战机.NES', cover: 'assets/covers/fc_interstellar.png', tags: { cn: '射击', en: 'Shooter' }, plays: 360000 },
     { id: 7050, cat: 'fc', title: { cn: '小蜜蜂', en: 'Galaxian' }, rom: 'roms/fc/[099]  射击类 - 小蜜蜂.NES', cover: 'assets/covers/fc_galaxian.png', tags: { cn: '射击', en: 'Shooter' }, plays: 410000 },
     { id: 7051, cat: 'fc', title: { cn: '未来小子', en: 'Future Boy' }, rom: 'roms/fc/[100]  射击类 - 未来小子.NES', cover: 'assets/covers/fc_futureboy.png', tags: { cn: '射击', en: 'Shooter' }, plays: 330000 },
+    { id: 7052, cat: 'fc', title: { cn: '撞球传说', en: 'Billiards Legend' }, rom: 'roms/fc/[001]  桌面类 - 撞球传说.NES', cover: 'assets/covers/fc_billiardslegend.png', tags: { cn: '休闲', en: 'Casual' }, plays: 210000 },
+    { id: 7053, cat: 'fc', title: { cn: '中国象棋', en: 'Chinese Chess' }, rom: 'roms/fc/[002]  桌面类 - 中国象棋.nes', cover: 'assets/covers/fc_chinesechess.png', tags: { cn: '休闲', en: 'Casual' }, plays: 230000 },
+    { id: 7054, cat: 'fc', title: { cn: '智慧方块', en: 'Wisdom Blocks' }, rom: 'roms/fc/[003]  桌面类 - 智慧方块.nes', cover: 'assets/covers/fc_wisdomblocks.png', tags: { cn: '益智', en: 'Puzzle' }, plays: 250000 },
+    { id: 7055, cat: 'fc', title: { cn: '月宫桌球', en: 'Moon Palace Billiards' }, rom: 'roms/fc/[004]  桌面类 - 月宫桌球.NES', cover: 'assets/covers/fc_moonpalace.png', tags: { cn: '休闲', en: 'Casual' }, plays: 200000 },
+    { id: 7056, cat: 'fc', title: { cn: '异域诛魂', en: 'Exotic Soul Slayer' }, rom: 'roms/fc/[005]  桌面类 - 异域诛魂.NES', cover: 'assets/covers/fc_yiyizhuhun.png', tags: { cn: '动作', en: 'Action' }, plays: 220000 },
 
     // ---- MD / 世嘉 ----
     { id: 8109, cat: 'md', title: { cn: '爱登斯家族', en: 'The Addams Family' }, rom: 'roms/md/adamsfamily.bin', cover: 'assets/covers/md_adamsfamily.png', tags: { cn: '平台', en: 'Platformer' }, plays: 420000 },
